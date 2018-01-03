@@ -5,4 +5,11 @@
  */
 export {default as Main} from './main'
 export {default as UserHome} from './user-home'
+export {default as UploadForm} from './upload-form'
+export {default as Home} from './home'
 export {Login, Signup} from './auth-form'
+export {default as Result} from './result'
+export {default as UserPhotos} from './userphotos'
+export {default as TakePhoto} from './takephoto'
+
+

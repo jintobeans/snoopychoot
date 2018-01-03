@@ -13,11 +13,11 @@ const AuthForm = (props) => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="email"><small>Email</small></label>
+          <label htmlFor="email"><small>email</small></label>
           <input name="email" type="text" />
         </div>
         <div>
-          <label htmlFor="password"><small>Password</small></label>
+          <label htmlFor="password"><small>password</small></label>
           <input name="password" type="password" />
         </div>
         <div>
@@ -25,7 +25,7 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <a href="/auth/google">{displayName} with google</a>
     </div>
   )
 }
@@ -40,7 +40,7 @@ const AuthForm = (props) => {
 const mapLogin = (state) => {
   return {
     name: 'login',
-    displayName: 'Login',
+    displayName: 'login',
     error: state.user.error
   }
 }
@@ -48,7 +48,7 @@ const mapLogin = (state) => {
 const mapSignup = (state) => {
   return {
     name: 'signup',
-    displayName: 'Sign Up',
+    displayName: 'sign up',
     error: state.user.error
   }
 }

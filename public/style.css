@@ -1,13 +1,59 @@
+html {
+  background-color: yellow;
+}
+
+h1 {
+  color: black;
+  display: inline
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a {
   text-decoration: none;
 }
 
+a.active {
+  color: pink
+}
+
 label {
   display: block;
+}
+
+#takeBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#photoBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap
+}
+
+.photo img{
+  width: 256px;
+  height: 256px
+}
+
+.fun nav {
+  display: flex;
+  flex-direction: column
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between
+}
+
+nav div {
+  display: inline-block;
 }
 
 nav a {
