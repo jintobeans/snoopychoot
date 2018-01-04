@@ -155,7 +155,11 @@ class Edit extends Component {
           <button onClick={(e) => this.onSave(e)}>save</button>
           {this.state.saved && <div>
             <h4>saved the snoop!</h4>
-            <NavLink to="/userPhotos">view snoops</NavLink></div>}
+            </div>}
+          <div className="back" style={{marginBottom:20}}>
+            <label htmlFor=""> <br /></label>
+            <NavLink to="/userPhotos">back to my snoops</NavLink>
+          </div>
           </div>
         </div>
 

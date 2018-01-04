@@ -42,7 +42,8 @@ class Upload extends Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result
+        imagePreviewUrl: reader.result,
+        uploaded: false
       })
     }
     reader.readAsDataURL(file)
@@ -57,7 +58,7 @@ class Upload extends Component {
       $imageToPreview = (<div className="previewText">please select a snoop :)</div>);
     }
     return (
-      <div>
+      <div className="container">
         <div className="uploadContainer">
         <h2>upload a snoop from the desktop!</h2>
           <form

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Route, Switch, Router} from 'react-router-dom'
+import {Route, Switch, Router, DefaultRoute} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
 import {Main, Login, Signup, UserHome, Home, UploadForm, Result, UserPhotos, TakePhoto, EditPhoto} from './components'
@@ -35,7 +35,6 @@ class Routes extends Component {
                   <Route exact path="/userPhotos" component={UserPhotos} />
                   <Route path="/userPhotos/:photoid" component={EditPhoto} />
                   <Route exact path="/takePhoto" component={TakePhoto} />
-                   {/*<Route path="/uploadForm/result" component={Result} /> */}
                 </Switch>
             }
             {/* Displays our Login component as a fallback */}

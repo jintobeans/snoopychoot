@@ -51,7 +51,7 @@ class Take extends Component {
       $imageToPreview = (<div className="previewText">please snoop a snoop</div>);
     }
     return (
-      <div>
+      <div className="container">
         <h2>
         snoop a snoop ;)
         </h2>
@@ -66,7 +66,8 @@ class Take extends Component {
               <br />
             <button onClick={this.capture}>snoop the snoop</button>
           </div>
-          <div className="imgPreview">
+        </div>
+        <div className="imgPreview">
             <h4>snoop to upload:</h4>
             {this.state.uploaded &&
               <div><h3>snoop has been uploaded!</h3>
@@ -77,7 +78,6 @@ class Take extends Component {
             <br />
             <button onClick={this.uploadPic}>upload snoop!</button>
           </div>
-        </div>
       </div>
     )
   }

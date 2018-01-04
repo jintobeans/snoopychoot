@@ -7,6 +7,16 @@ h1 {
   display: inline
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.main h1 {
+  align-self: flex-end
+}
+
 body {
   font-family: 'Lato', sans-serif;
 }
@@ -17,7 +27,6 @@ a {
 
 a.active {
   color: pink;
-  font-weight: 900
 }
 
 a:hover {
@@ -37,21 +46,47 @@ label {
 #takeBox {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 #photoBox {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  justify-content: center
 }
 
 .photo img{
-  width: 256px;
-  height: 256px
+  width: 250px;
+  height: 390px;
+  align-self: center
 }
 
-.fun nav {
+.container {
+  display: flex;
+  flex-direction: column
+}
+.container h2 {
+  align-self: center
+}
+
+.container a {
+  align-self: center
+}
+
+.container form {
+  align-self: center
+}
+
+.container img {
+  align-self: center
+}
+
+.container div {
+  align-self: center
+}
+
+.container nav {
   display: flex;
   flex-direction: column
 }
@@ -60,7 +95,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between
+  justify-content: center
 }
 
 nav div {

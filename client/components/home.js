@@ -10,7 +10,7 @@ export const Home = (props) => {
   // const {email} = props
 
   return (
-    <div className="fun">
+    <div className="container">
       <h2>what would you like to do?</h2>
       <nav>
         <NavLink to="/uploadForm" activeStyle={ { textDecoration: 'bold', color: 'pink'}}>upload snoop from desktop</NavLink>

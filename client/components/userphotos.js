@@ -43,7 +43,7 @@ class Photos extends Component {
 
   render(){
     return (
-      <div>
+      <div className="container">
         <h2>
           my snoops
         </h2>
