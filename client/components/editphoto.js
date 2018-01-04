@@ -29,10 +29,15 @@ class Edit extends Component {
       items: [],
       saved: false,
       width: 640,
-      height: 1000
+      height: 1000,
+      states: [],
+      step: 0
     }
     this.onSave = this.onSave.bind(this)
     this.doSomething = this.doSomething.bind(this)
+    // this.undo = this.undo.bind(this)
+    // this.redo = this.redo.bind(this)
+    this.filter = this.filter.bind(this)
   }
 
   componentDidMount(){
@@ -64,6 +69,7 @@ class Edit extends Component {
     imageObj1.onload = function(){
       ctx.drawImage(imageObj1, 0, 0)
     }
+    // this.state.states.push(imageObj1)
   }
 
   onSave(e){
@@ -85,6 +91,54 @@ class Edit extends Component {
     this.setState({
       saved: false
     })
+    // const ctx = document.getElementById('myCanvas').getContext('2d');
+
+    // this.setState({
+    //   step: this.state.step + 1
+    // })
+
+    // this.state.states.push(document.getElementById('myCanvas').toDataURL())
+    // function cPush() {
+    //     cStep++;
+    //     if (cStep < cPushArray.length) { cPushArray.length = cStep; }
+    //     cPushArray.push(document.getElementById('myCanvas').toDataURL());
+    // }
+  }
+
+  // undo(e){
+  //   console.log('thing undo', e)
+  // //   const ctx = document.getElementById('myCanvas').getContext('2d');
+  // //   if (this.state.step > 0) {
+  // //     this.setState({
+  // //       step: this.state.step - 1
+  // //     })
+  // //     let canvasPic = new Image();
+  // //     canvasPic.src = this.state.states[this.state.step];
+  // //     canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+  // // }
+  // }
+
+  // redo(e){
+  //   console.log('thing redo', e)
+  // }
+
+  clear(e){
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    var imageObj1 = new Image();
+    imageObj1.src = this.state.imagePreviewUrl;
+    imageObj1.onload = function(){
+      ctx.drawImage(imageObj1, 0, 0)
+    }
+  }
+
+  filter(e){
+    let filterToApply = e.target.name
+    console.log('filterToApply', filterToApply)
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
   }
 
   render(){
@@ -150,20 +204,25 @@ class Edit extends Component {
                   <input type="color" value={fillColor} onChange={(e) => this.setState({fillColor: e.target.value})} />
                 </span> : ''}
             </div> : ''}
+          <div className="filter" style={{marginBottom:20}}>
+            <label htmlFor="">filter:</label>
+            <button name="gray" onClick={(e) => this.filter(e)}>gray</button>
+          </div>
+          <div className="buttons" style={{marginBottom:20}}>
+            <label htmlFor="">undo:</label>
+            <button onClick={(e) => this.clear(e)}>clear</button>
+          </div>
           <div className="save" style={{marginBottom:20}}>
-          <label htmlFor="">save? </label>
-          <button onClick={(e) => this.onSave(e)}>save</button>
-          {this.state.saved && <div>
-            <h4>saved the snoop!</h4>
-            </div>}
-          <div className="back" style={{marginBottom:20}}>
-            <label htmlFor=""> <br /></label>
+            <label htmlFor="">save?</label>
+            <button onClick={(e) => this.onSave(e)}>save</button>
+            {this.state.saved && <div>
+              <h4>saved the snoop!</h4>
+              </div>}
+          </div>
+          <div className="userPhotos" style={{marginBottom:20}}>
             <NavLink to="/userPhotos">back to my snoops</NavLink>
           </div>
-          </div>
         </div>
-
-
       </div>
     )
   }

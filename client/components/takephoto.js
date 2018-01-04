@@ -70,11 +70,14 @@ class Take extends Component {
         <div className="imgPreview">
             <h4>snoop to upload:</h4>
             {this.state.uploaded &&
-              <div><h3>snoop has been uploaded!</h3>
+              <div style={{marginBottom: 20}}><h3>snoop has been uploaded!</h3>
               <NavLink to="/userPhotos">view snoops</NavLink>
+              <br />
               </div>
             }
+            <div>
             {$imageToPreview}
+            </div>
             <br />
             <button onClick={this.uploadPic}>upload snoop!</button>
           </div>
