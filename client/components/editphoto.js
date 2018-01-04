@@ -38,6 +38,7 @@ class Edit extends Component {
     // this.undo = this.undo.bind(this)
     // this.redo = this.redo.bind(this)
     this.filter = this.filter.bind(this)
+    this.goog = this.goog.bind(this)
   }
 
   componentDidMount(){
@@ -141,6 +142,10 @@ class Edit extends Component {
     const ctx = canvas.getContext('2d');
   }
 
+  goog(e){
+    console.log('hello', e)
+  }
+
   render(){
     const { file, imagePreviewUrl, tool, size, color, fill, fillColor, items } = this.state;
 
@@ -209,7 +214,7 @@ class Edit extends Component {
             <button name="gray" onClick={(e) => this.filter(e)}>gray</button>
           </div>
           <div className="buttons" style={{marginBottom:20}}>
-            <label htmlFor="">undo:</label>
+            <label htmlFor="">clear:</label>
             <button onClick={(e) => this.clear(e)}>clear</button>
           </div>
           <div className="save" style={{marginBottom:20}}>
@@ -218,6 +223,10 @@ class Edit extends Component {
             {this.state.saved && <div>
               <h4>saved the snoop!</h4>
               </div>}
+          </div>
+          <div className="goog" style={{marginBottom:20}}>
+            <label htmlFor="">goog:</label>
+            <button onClick={(e) => this.goog(e)}>goog</button>
           </div>
           <div className="userPhotos" style={{marginBottom:20}}>
             <NavLink to="/userPhotos">back to my snoops</NavLink>
