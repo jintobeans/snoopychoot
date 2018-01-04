@@ -27,7 +27,9 @@ class Edit extends Component {
       fill: false,
       fillColor: '#444444',
       items: [],
-      saved: false
+      saved: false,
+      width: 640,
+      height: 1000
     }
     this.onSave = this.onSave.bind(this)
     this.doSomething = this.doSomething.bind(this)
@@ -36,6 +38,14 @@ class Edit extends Component {
   componentDidMount(){
     axios.get(`/api/photos/${this.props.match.params.photoid}`)
     .then(res => {
+      let imageObject = new Image()
+      imageObject.src = res.data.imagePreviewUrl
+      imageObject.onload = () => {
+          this.setState({
+            width: imageObject.width,
+            height: imageObject.height,
+          })
+      }
       this.setState({
         file: res.data.file,
         imagePreviewUrl: res.data.imagePreviewUrl,
@@ -88,8 +98,8 @@ class Edit extends Component {
 
           <div style={{float:'left', marginRight:20}}>
           <SketchPad
-            width={640}
-            height={1000}
+            width={this.state.width}
+            height={this.state.height}
             animate={true}
             size={size}
             color={color}
