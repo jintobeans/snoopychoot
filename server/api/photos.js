@@ -57,12 +57,25 @@ router.delete('/:photoid', (req, res, next) => {
 })
 
 router.post('/:photoid', (req, res, next) => {
+  let newUrl = req.body.imagePreviewUrl
   Photo.findOne({
     where: {
       id: +req.params.photoid
     }
   })
-  .then(photo => res.json(photo))
+  .then(photo => {
+    if (+photo.UserId === +req.session.passport.user){
+      return photo.update({
+        imagePreviewUrl: newUrl
+      })
+      .then(updated => console.log('updated', updated))
+    }
+    else {
+      res.json('You do not have permission to edit this photo!')
+    }
+  })
   .catch(next)
+
+
 })
 

@@ -16,8 +16,19 @@ a {
 }
 
 a.active {
-  color: pink
+  color: pink;
+  font-weight: 900
 }
+
+a:hover {
+  color: black;
+  font-weight: 900
+}
+
+/* a:visited
+{
+    color: black
+} */
 
 label {
   display: block;

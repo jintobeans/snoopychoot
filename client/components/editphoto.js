@@ -26,9 +26,11 @@ class Edit extends Component {
       color: '#000000',
       fill: false,
       fillColor: '#444444',
-      items: []
+      items: [],
+      saved: false
     }
-    this.setState = this.setState.bind(this)
+    this.onSave = this.onSave.bind(this)
+    this.doSomething = this.doSomething.bind(this)
   }
 
   componentDidMount(){
@@ -37,8 +39,6 @@ class Edit extends Component {
       this.setState({
         file: res.data.file,
         imagePreviewUrl: res.data.imagePreviewUrl,
-        width: 640,
-        height: 1000
       })
       this.makeCanvas();
     })
@@ -56,6 +56,27 @@ class Edit extends Component {
     }
   }
 
+  onSave(e){
+    console.log('going to save image', e)
+    const canvas = document.getElementById('myCanvas')
+
+    let dataURL = canvas.toDataURL();
+
+    axios.post(`/api/photos/${this.props.match.params.photoid}`, {imagePreviewUrl: dataURL})
+    .then(res => console.log('result', res.data))
+    .catch(err => console.log('err', err))
+    this.setState({
+      saved: true
+    })
+  }
+
+  doSomething(i){
+    console.log('changed image', i)
+    this.setState({
+      saved: false
+    })
+  }
+
   render(){
     const { file, imagePreviewUrl, tool, size, color, fill, fillColor, items } = this.state;
 
@@ -64,23 +85,18 @@ class Edit extends Component {
         <h2>
         edit photo
         </h2>
-          {/*<canvas
-          id="myCanvas"
-          width={this.state.width}
-          height={this.state.height}
-          />*/}
 
           <div style={{float:'left', marginRight:20}}>
           <SketchPad
-            width={500}
-            height={500}
+            width={640}
+            height={1000}
             animate={true}
             size={size}
             color={color}
             fillColor={fill ? fillColor : ''}
             items={items}
             tool={tool}
-            onCompleteItem={(i) => wsClient.emit('addItem', i)}
+            onCompleteItem={(i) => this.doSomething(i)}
           />
         </div>
         <div style={{float:'left'}}>
@@ -124,6 +140,13 @@ class Edit extends Component {
                   <input type="color" value={fillColor} onChange={(e) => this.setState({fillColor: e.target.value})} />
                 </span> : ''}
             </div> : ''}
+          <div className="save" style={{marginBottom:20}}>
+          <label htmlFor="">save? </label>
+          <button onClick={(e) => this.onSave(e)}>save</button>
+          {this.state.saved && <div>
+            <h4>saved the snoop!</h4>
+            <NavLink to="/userPhotos">view snoops</NavLink></div>}
+          </div>
         </div>
 
 

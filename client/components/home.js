@@ -13,7 +13,7 @@ export const Home = (props) => {
     <div className="fun">
       <h2>what would you like to do?</h2>
       <nav>
-        <NavLink to="/uploadForm">upload snoop from desktop</NavLink>
+        <NavLink to="/uploadForm" activeStyle={ { textDecoration: 'bold', color: 'pink'}}>upload snoop from desktop</NavLink>
         <NavLink to="/takePhoto">snoop a snoop</NavLink>
         <NavLink to="/userPhotos">view or edit my snoops</NavLink>
       </nav>
