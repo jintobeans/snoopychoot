@@ -55,7 +55,9 @@ class Photos extends Component {
               <form>
                 <img src={photo.imagePreviewUrl} />
                 <br />
-                <button name={photo.id} onClick={this.handleEdit}>edit</button>
+                <NavLink to={`/userPhotos/${photo.id}`}>
+                  <button name={photo.id} >edit</button>
+                </NavLink>
                 <button name={photo.id} onClick={this.handleDelete}>x</button>
               </form>
             </div>

@@ -11,5 +11,7 @@ export {Login, Signup} from './auth-form'
 export {default as Result} from './result'
 export {default as UserPhotos} from './userphotos'
 export {default as TakePhoto} from './takephoto'
+export {default as EditPhoto} from './editphoto'
+
 
 

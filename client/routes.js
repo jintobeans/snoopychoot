@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Route, Switch, Router} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome, Home, UploadForm, Result, UserPhotos, TakePhoto} from './components'
+import {Main, Login, Signup, UserHome, Home, UploadForm, Result, UserPhotos, TakePhoto, EditPhoto} from './components'
 import {me} from './store'
 
 /**
@@ -33,7 +33,8 @@ class Routes extends Component {
                   <Route path="/fun" component={Home} />
                   <Route exact path="/uploadForm" component={UploadForm} />
                   <Route exact path="/userPhotos" component={UserPhotos} />
-                  <Route exact path='/takePhoto' component={TakePhoto} />
+                  <Route path="/userPhotos/:photoid" component={EditPhoto} />
+                  <Route exact path="/takePhoto" component={TakePhoto} />
                    {/*<Route path="/uploadForm/result" component={Result} /> */}
                 </Switch>
             }

@@ -28,6 +28,24 @@ router.post('/', (req, res, next) => {
   .catch(next)
 })
 
+router.get('/:photoid', (req, res, next) => {
+  console.log('user?', req.session.passport.user)
+  Photo.findOne({
+    where: {
+      id: +req.params.photoid
+    }
+  })
+  .then(photo => {
+    if (+photo.UserId === +req.session.passport.user){
+      res.json(photo)
+    }
+    else {
+      res.json('You do not have permission to edit this photo!')
+    }
+  })
+  .catch(next)
+})
+
 router.delete('/:photoid', (req, res, next) => {
   Photo.destroy({
     where: {

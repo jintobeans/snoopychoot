@@ -26,7 +26,7 @@ const Main = (props) => {
                   ? <div>
                     {/* The navbar will show these NavLinks after you log in */}
                     <NavLink exact to="/">hi</NavLink>
-                    <NavLink to="/fun">snooping</NavLink>
+                    <NavLink to="/fun">fun</NavLink>
                     <a href="#" onClick={handleClick}>gtfo</a>
                   </div>
                   : <div>
