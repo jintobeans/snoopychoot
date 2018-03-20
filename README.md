@@ -39,10 +39,6 @@ Install dependencies:
 ```
 npm install
 ```
-Create a *secrets.js* file in the project repository and save API key there:
-```
-PROCESS.ENV.API_KEY = 'enter api key here'
-```
 Run on local server:
 ```
 npm run start-dev
